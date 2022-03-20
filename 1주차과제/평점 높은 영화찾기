@@ -1,0 +1,64 @@
+'movies 테이블은 여러 스트리밍 플랫폼에서 제공하는 영화의 정보를 담고 있습니다.
+
+최신 개봉작 중 평점이 높은 영화를 넷플릭스에서 보려고 합니다. 넷플릭스에 있는 2020년 개봉작 중, IMDb 평점이 9.0 이상이거나 로튼토마토 지수가 90 이상인 영화의 제목, 개봉연도, 시청 가능 연령, IMDb 평점, 로튼토마토 지수를 출력하는 쿼리를 작성해주세요.'
+
+일단 답을 먼저 말하자면 
+SELECT title, year, age, imdb, rotten_tomatoes
+FROM movies 
+WHERE year = 2020 
+AND netflix = 1
+AND (IMDb >= 9.0 
+OR rotten_tomatoes >= 90)
+입니다.
+
+우선 해당 문제를 풀기 전 저는 항상 문제를 풀기 전에 devide and conquer, 즉 나눠서 정복한다 라는 마인드로 문제의 대한 과정을 해결하려 노력합니다.
+
+movies 테이블은 여러 스트리밍 플랫폼에서 제공하는 영화의 정보를 담고 있습니다.라는 문장만 봤을 때 구체적으로 어떠한 행과 열 데이터가 있는지 체감이 되지 않습니다.  
+그래서 저는 
+SELECT * 
+FROM movies
+LIMIT 10; 
+를 이용하여 일단 테이블의 레코드와 칼럼을 확인합니다.
+
+해당 쿼리문을 작성하면 id, title, year, age, imdb 등 15개의 다양한 컬럼과 그에 맞는 데이터들이 있군요! 
+
+다음 문장을 확인하겠습니다. '최신 개봉작 중 평점이 높은 영화를 넷플릭스에서 보려고 합니다.' 이 말은 즉, 넷플릭스에서 제공되는 영화를 본다는 것으로 해석할 수 있습니다. 
+그러면 다음과 같은 쿼리를 작성할 수 있겠네요.
+SELECT *
+FROM movies 
+WHERE netflix = 1;
+
+다음 문장을 볼까요? '넷플릭스에 있는 2020년 개봉작 중, IMDb 평점이 9.0 이상이거나 로튼 토마토 지수가 90 이상인...' 까지 본다면 넷플릭스에 있는 2020년 개봉작 이 두 가지의 조건을 만족해야 하므로, netflix = 1 AND year = 2020이 될 것입니다. 그리고 IMDb 평점이 9.0 이상이거나 로튼 토마토 지수가 90 이상을 만족해야 하므로 imdb >= 9.0 OR rotten_tomatoes >= 90 이어야 합니다. 
+
+즉 문제에 나와 있는 조건을 합친다면 쿼리의 결과로 
+SELECT * 
+FROM movies 
+WHERE netflix = 1 
+AND year = 2020 
+AND imdb >= 9.0 
+OR rotten_tomatoes >= 90; 
+으로 작성하면 되겠네요? 하지만 SQL에는 연산자 우선순위가 있습니다. 논리 연산자 AND가 OR보다 우선순위가 높기 때문에 우선순위의 수동적으로 높게 설정하기 위해 OR에 괄호를 설정해야 합니다. 
+
+여담이지만 참고로 우선순위를 확인하기 위해 구글에 'sql operator precedence'를 검색하거나 한글로 'SQL 연산자 우선순위'로 검색하여 마이크로소프트 SQL DOCS나 스택 오버플로우, 여러 기술 블로그를 보았습니다. 한가지 아쉬운건 MYSQL DOCS의 연산자 우선 순위에 대한 문서를 찾고 싶었지만 찾지 못해 아쉬웠습니다. 
+
+따라서 우선순위를 써서 쿼리를 다시 쓴 결과 
+SELECT * 
+FROM movies 
+WHERE netflix = 1 
+AND year = 2020 
+AND (imdb >= 9.0 
+OR rotten_tomatoes >= 90); 
+이며, 
+
+'제목, 개봉연도, 시청 가능 연령, IMDb 평점, 로튼토마토 지수를 출력하는 쿼리를 작성해주세요.' .라는 문제를 만족하기 위해 다음과 같이 SELECT 절에 만족하는 칼럼을 작성합니다.
+SELECT title, year, age, imdb, rotten_tomatoes 
+FROM movies 
+WHERE netflix = 1 
+AND year = 2020 
+AND (imdb >= 9.0 
+OR rotten_tomatoes >= 90); 
+
+ 
+
+
+

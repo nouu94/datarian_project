@@ -1,0 +1,35 @@
+tips 테이블에는 식사 주문 금액, 팁, 결제자 성별, 요일, 시간대 등 음식점의 방문 고객들과 관련된 데이터가 들어있습니다. 가장 비싼 한 끼 식사를 한 고객이 방문한 요일, 시간대, 같이 식사한 일행 수를 구하는 쿼리를 작성해주세요. 결과 데이터에는 day, time, size 컬럼이 있어야 합니다.
+
+일단 답을 먼저 말하자면 
+SELECT day, time, size 
+FROM tips 
+ORDER BY total_bill DESC
+LIMIT 1;
+입니다.
+
+
+우선 해당 문제를 풀기 전 저는 항상 문제를 풀기 전에 devide and conquer, 즉 나눠서 정복한다 라는 마인드로 문제의 대한 과정을 해결하려 노력합니다. 
+
+'tips 테이블에는 식사 주문 금액, 팁, 결제자 성별, 요일, 시간대 등 음식점의 방문 고객들과 관련된 데이터가 들어있습니다.' 라는 문장만 봤을 때 구체적으로 어떠한 행과 열 데이터가 있는지 체감이 되지 않습니다. 
+
+그래서 저는 
+SELECT * 
+FROM tips; 
+를 이용하여 일단 테이블의 레코드와 칼럼을 확인합니다.
+그럼 다음과 같이 total_bill, tip, sex, smoker, day, time, size 총 7개의 칼럼이 있는 것을 확인할 수 있습니다.
+
+그 다음 다음 문장인 '가장 비싼 한 끼 식사를 한 고객이 방문한 요일, 시간대, 같이 식사한 일행 수를 구하는 쿼리를 작성해주세요.' 라는 문장을 보았을 때 가장 비싼 한 끼를 확인해야 하므로, 내림 차순 정렬 쿼리인 ORDER BY total_bill DESC 를 작성해야 된다는 것을 유추할 수 있습니다. 
+
+SELECT * 
+FROM tips
+ORDER BY total_bill DESC
+LIMIT 1;
+
+해당 쿼리문을 작성하면 total_bill 이 가장 높은 50.81 달러인 데이터 하나가 출력 됩니다. 이후 day, time, size 컬럼만을 구하라고 했으므로 답은 다음과 같습니다. 
+SELECT day, time, size 
+FROM tips
+ORDER BY total_bill DESC
+LIMIT 1; 
+
+
+
