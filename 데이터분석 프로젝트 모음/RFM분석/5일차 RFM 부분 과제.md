@@ -43,7 +43,7 @@ US E-Commerce Records 2020 데이터 셋은 2020년 미국 전자 상거래의 �
 
 각각의 테이블은 customer_id로 테이블이 연결되어 있으며 orders 다 대 customer_stats 일의 구조를 띈다. 그림으로 간략하게 나타내면 다음과 같이 그릴 수 있겠다.
 
-![데이터 설명](D:\데이터리안숙제\데이터분석 프로젝트 모음\RFM분석\이미지 첨부 폴더\데이터 설명.png)
+![데이터 설명](https://user-images.githubusercontent.com/71218142/161432635-aca10a85-5356-42e3-8b88-fbb6ace9035a.png)
 
 <br>
 
@@ -69,7 +69,7 @@ US E-Commerce Records 2020 데이터 셋은 2020년 미국 전자 상거래의 �
 
 **order_id** : 주문 아이디. 한명의 고객이 다수의 물품을 구매했다면 records 테이블에 다수의 레코드가 등록이 된다.  예를들어 customer_id가 JM-15250인 고객이 의자 5개, 형광등 4개 등을 구입했다고 했을 때 다음과 같이 레코드가 등록이 된다. <br>
 
-![JM-15250](D:\데이터리안숙제\데이터분석 프로젝트 모음\RFM분석\이미지 첨부 폴더\JM-15250.png)
+![JM-15250](https://user-images.githubusercontent.com/71218142/161432656-4256ff96-9884-443f-a813-d24915035547.png)
 
  <br>
 
@@ -113,7 +113,7 @@ US E-Commerce Records 2020 데이터 셋은 2020년 미국 전자 상거래의 �
 
 #### customer_stats 테이블
 
- ![customer_stats](D:\데이터리안숙제\데이터분석 프로젝트 모음\RFM분석\이미지 첨부 폴더\customer_stats.png)
+![customer_stats](https://user-images.githubusercontent.com/71218142/161432685-fe506419-48d6-423e-a950-932ee36338e7.png)
 
 고객의 정보를 가진 테이블이다. 다음과 같이 총 5개의 칼럼이 있다. 
 
@@ -133,11 +133,11 @@ US E-Commerce Records 2020 데이터 셋은 2020년 미국 전자 상거래의 �
 
 ### 각 유저들의 Recency, Frequency, Monetary 값 산출
 
-![customer_stats2](D:\데이터리안숙제\데이터분석 프로젝트 모음\RFM분석\이미지 첨부 폴더\customer_stats2.png)
+![customer_stats2](https://user-images.githubusercontent.com/71218142/161432696-d479f042-f40f-4194-a774-fbaf36d8c4c9.png)
 
 <br>
 
-![recency_frequency_monetary](D:\데이터리안숙제\데이터분석 프로젝트 모음\RFM분석\이미지 첨부 폴더\recency_frequency_monetary.png)
+![recency_frequency_monetary](https://user-images.githubusercontent.com/71218142/161432717-427e71dc-634b-47f9-88e5-4908289ff80d.png)
 
 customer_stats 테이블로 간단하게 해결할 수 있었다. <br>
 
@@ -153,7 +153,7 @@ last_order_date를 recency로 cnt_orders를 frequency로 sum_sales를 monetary�
 
 #### Recency 
 
-![image-20220327193708216](C:\Users\ck12q\AppData\Roaming\Typora\typora-user-images\image-20220327193708216.png)
+![image-20220327193708216](https://user-images.githubusercontent.com/71218142/161432776-07238c35-82eb-4aad-b94e-6a46b3eb24d8.png)
 
 Recency가 오래 된 일자 : **20.01.02**
 
@@ -167,7 +167,7 @@ Recency 가장 최근 일자 :  **20.12.30**
 
 last_order_date를 카운트하여 일자별 중위 수를 구함. 
 
-![중위수](D:\데이터리안숙제\데이터분석 프로젝트 모음\RFM분석\이미지 첨부 폴더\중위수.png)
+![중위수](https://user-images.githubusercontent.com/71218142/161432806-09defe24-48bd-497b-8d75-f1a01d3d11b4.png)
 
 
 
@@ -179,7 +179,7 @@ last_order_date를 카운트하여 일자별 중위 수를 구함.
 
 월 별로 그룹으로 묶어 월 별 일자를 카운트하는 쿼리도 작성을 해봄 
 
-![image-20220327201526649](C:\Users\ck12q\AppData\Roaming\Typora\typora-user-images\image-20220327201526649.png)
+![image-20220327201526649](https://user-images.githubusercontent.com/71218142/161432835-f8778a5a-9b59-4aa3-9c7d-f04d971c4a5e.png)
 
 11월, 12월 전체 693개 데이터 중 357개로 Recency인 최근 주문 일자가 가장 최근 일자인 20.12.30과 비교하여  2개월 이내에 주문한 회원이 전체의 50% 이상 된다는 것도 알 수 있다. 
 
@@ -189,7 +189,7 @@ last_order_date를 카운트하여 일자별 중위 수를 구함.
 
 #### Frequency
 
-![image-20220327202609975](C:\Users\ck12q\AppData\Roaming\Typora\typora-user-images\image-20220327202609975.png)
+![image-20220327202609975](https://user-images.githubusercontent.com/71218142/161432867-ba19a22f-d65a-478d-87e4-3505783a3c5d.png)
 
 frequency에 해당하는 cnt_orders(주문 횟수)의 최소, 최대, 평균 값을 도출함 
 
@@ -199,13 +199,13 @@ frequency에 해당하는 cnt_orders(주문 횟수)의 최소, 최대, 평균 �
 
 평균 : 2.43 
 
-![cnt_orders](D:\데이터리안숙제\데이터분석 프로젝트 모음\RFM분석\이미지 첨부 폴더\cnt_orders.png)
+![cnt_orders](https://user-images.githubusercontent.com/71218142/161432891-025ee027-219a-41ea-bc54-5513fb219b51.png)
 
 <br>
 
 <br>
 
-![image-20220327203220716](C:\Users\ck12q\AppData\Roaming\Typora\typora-user-images\image-20220327203220716.png)
+![image-20220327203220716](https://user-images.githubusercontent.com/71218142/161432911-368ab649-a99a-4cda-99bd-7c04c033c842.png)
 
 이어서 cnt_orders를 그룹화 하여 cnt_orders를 기준으로 고객들의 갯수를 도출하는 쿼리도 작성 해봄 그 결과 주문 횟수가 1, 2회가 전체 고객의 50% 이상인 것을 알 수 있었음.
 
@@ -215,7 +215,7 @@ frequency에 해당하는 cnt_orders(주문 횟수)의 최소, 최대, 평균 �
 
 #### Monetary
 
-![image-20220327203852296](C:\Users\ck12q\AppData\Roaming\Typora\typora-user-images\image-20220327203852296.png)
+![image-20220327203852296](https://user-images.githubusercontent.com/71218142/161432931-c67b3ad0-1f59-4cf3-9866-83146f39d4c0.png)
 
 Monetary에 해당하는 sum_sales(매출 합계, 즉 고객이 구매한 총 금액)의 최소, 최대, 평균 값을 도출함 
 
@@ -225,7 +225,7 @@ Monetary에 해당하는 sum_sales(매출 합계, 즉 고객이 구매한 총 �
 
 평균 : 1058.031
 
-![image-20220327204427717](C:\Users\ck12q\AppData\Roaming\Typora\typora-user-images\image-20220327204427717.png)
+![image-20220327204427717](https://user-images.githubusercontent.com/71218142/161432944-e1891590-ef52-4521-b06a-7eed5b053c7f.png)
 
 
 
