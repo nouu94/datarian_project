@@ -14,7 +14,8 @@ LIMIT 1;
 
 그래서 저는 
 SELECT * 
-FROM tips; 
+FROM tips
+LIMIT 10; 
 를 이용하여 일단 테이블의 레코드와 칼럼을 확인합니다.
 그럼 다음과 같이 total_bill, tip, sex, smoker, day, time, size 총 7개의 칼럼이 있는 것을 확인할 수 있습니다.
 
